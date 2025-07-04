@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up | Your Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <style>
+    body {
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+
+    .signup-card {
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .logo-circle {
+      border-radius: 9999px;
+      width: 48px;
+      height: 48px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body class="flex justify-center items-center min-h-screen relative">
+
+  <div class="overlay"></div>
+
+  <div class="signup-card max-w-md w-full relative z-10 text-gray-800">
+    <div class="text-center mb-6">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/37773679-a758-43c2-bb3c-9af608eab296.png" class="logo-circle mx-auto mb-3" />
+      <h2 class="text-3xl font-bold">Create an account</h2>
+      <p class="text-gray-500 text-sm mt-1">Start your journey with us</p>
+    </div>
+
+    <form id="signup-form">
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium">User Name</label>
+          <input type="user-name" id="user-name" class="w-full px-4 py-3 rounded-lg border border-gray-300" placeholder="Enter your User Name" required />
+        </div>
+
+
+        <div>
+          <label class="block text-sm font-medium">Password</label>
+          <input type="password" id="password" class="w-full px-4 py-3 rounded-lg border border-gray-300" placeholder="••••••••" required />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium">Confirm Password</label>
+          <input type="password" id="confirm-password" class="w-full px-4 py-3 rounded-lg border border-gray-300" placeholder="••••••••" required />
+        </div>
+
+        <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition">
+          Sign Up
+        </button>
+      </div>
+    </form>
+
+    <div class="my-6">
+      <div class="flex items-center">
+        <div class="flex-grow h-px bg-gray-300"></div>
+        <span class="px-4 text-gray-500 text-sm">or sign up with</span>
+        <div class="flex-grow h-px bg-gray-300"></div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-2 gap-3">
+        <!-- Google Sign Up -->
+        <div id="g_id_onload"
+          data-client_id="YOUR_GOOGLE_CLIENT_ID"
+          data-context="signup"
+          data-ux_mode="popup"
+          data-callback="handleGoogleSignup">
+        </div>
+        <div class="g_id_signin"
+          data-type="icon"
+          data-size="large"
+          data-theme="outline"
+          data-shape="circle"
+          data-logo_alignment="center">
+        </div>
+
+        <!-- MetaMask Sign Up -->
+        <button id="metamask-signup" class="w-full flex items-center justify-center gap-2 py-2 px-4 border border-gray-300 rounded-lg bg-white hover:bg-gray-100">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAACUUlEQVR4Ae2WA6weQRSFt7bdhrWNqLZtM6riFEFt27aCMqht27at2/3yMun8k52dmi/JyZvcOfd8O8r7vcrda/xS/YfAMXnj1x7RIEXsHxFOlhPYIZ13fU2FDCKdMrT9VpC0y9CKjE7pvTuhQFbmm6RRUk92lk8m0ibdufu1EuX6UhBev+cMvWSQRaYV6BtqYoqAtkwj0iLtHBfM98zCq8MQmWHAKZh06LGqyaOgqFWGdjK2fXZdbJ+ax2vA0BQrkPPDZIN+bJ9VZHQbkREtEWNqYTB0xw0MgF6rElekS2ETSI05G0zIDNvSfpiC5FvlSqcSH00gNeZsfWSGAbPaVrissHWFzFlXSKYViNqm8h60Se4JauGrS6aYcrNuKucZ4sFLj+ony/nwF9cuOGVZ3cKCeLyEKX1sltIEUovw0KP6yXICZXTrowSh9z0rEvhZDWMDihA13UOP6ifLCVRBCvi0dtQNRVfKevK6bz0FY0xNzeOlJ+KDwoDAqmDSAx+1L8Cl4JbyV18BY30Or/ogXVXCgBMNs6hwgs50rUioqjGmxpyqmTA0xQ4c1fouTUFScBOozwWJTCvwSjnvCmdiiquvQs0tVUA8Qb1kWoHXqsQbzOGb0m8g4WwjYqzf5KBeMq1A/p8FNXH1EYANvbtxSRBjVqjmA4FkWoHIbLhaypvxeMWcKbeevBd0+MBJGdC2tSDGqv541bzpeM1+5ztkC5D5ZTcfvc9y+/6r01duPpEtu44IYuzXzjBn7pTKcQDdunD5XstN2/aPRIyjf5f+duAnkHEA02/8X30AAAAASUVORK5CYII=" alt="MetaMask" class="h-5 w-5 rounded-full" />
+        </button>
+      </div>
+    </div>
+
+    <p class="mt-4 text-sm text-center text-gray-600">
+      Already have an account?
+      <a href="login.html" class="text-indigo-600 font-medium">Login</a>
+    </p>
+  </div>
+
+  <script>
+    // Google Sign-Up Callback
+    function handleGoogleSignup(response) {
+      const data = parseJwt(response.credential);
+      alert("Google Sign-Up: " + data.email);
+    }
+
+    function parseJwt(token) {
+      return JSON.parse(atob(token.split('.')[1]));
+    }
+
+    // MetaMask Sign-Up
+    document.getElementById("metamask-signup").addEventListener("click", async (e) => {
+      e.preventDefault();
+      if (typeof window.ethereum !== "undefined") {
+        try {
+          const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+          alert("MetaMask Wallet: " + accounts[0]);
+        } catch (err) {
+          alert("User rejected the connection.");
+        }
+      } else {
+        alert("MetaMask not detected.");
+      }
+    });
+
+    // Sign Up Form Handling
+    document.getElementById("signup-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirm = document.getElementById("confirm-password").value;
+
+      if (password !== confirm) {
+        alert("Passwords do not match!");
+        return;
+      }
+
+      // You can send email/password to server here
+      alert("Account created for " + email);
+    });
+  </script>
+</body>
+</html>
