@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verisoul | Blockchain Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+        }
+        .card-gradient {
+            background: linear-gradient(145deg, #ffffff 0%, #f0f4ff 100%);
+        }
+        .nft-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .connect-btn:hover {
+            background-color: #2563eb;
+        }
+        .nav-link:hover {
+            color: #2563eb;
+            border-bottom: 2px solid #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navbar -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/37773679-a758-43c2-bb3c-9af608eab296.png" alt="Verisoul logo - abstract blockchain symbol in blue and white" class="rounded-full w-8 h-8" />
+                <span class="text-xl font-bold">Verisoul</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="nav-link px-2 py-1 border-b-2 border-transparent">Home</a>
+                <a href="#deFi" class="nav-link px-2 py-1 border-b-2 border-transparent">DeFi</a>
+                <a href="#nft" class="nav-link px-2 py-1 border-b-2 border-transparent">NFTs</a>
+                <a href="#smart-contracts" class="nav-link px-2 py-1 border-b-2 border-transparent">Smart Contracts</a>
+            </div>
+            <button id="connectWallet" class="connect-btn bg-white text-blue-600 px-4 py-2 rounded-lg font-medium transition-colors duration-300">
+                Connect Wallet
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Next-Gen Blockchain Solutions</h1>
+                <p class="text-xl mb-8">Building secure blockchain solutions with smart contracts, DeFi protocols, and NFT innovations.</p>
+                <button class="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium text-lg hover:bg-blue-50 transition-colors duration-300">
+                    Explore Platform
+                </button>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ec9efecd-fcab-4500-8e81-60c6da3e73bb.png" alt="Futuristic blockchain visualization with digital connections and blue nodes" class="rounded-lg shadow-2xl" />
+            </div>
+        </div>
+    </section>
+
+    <!-- DeFi Section -->
+    <section id="deFi" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">DeFi Solutions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- DeFi Card 1 -->
+                <div class="card-gradient p-6 rounded-xl shadow-lg">
+                    <div class="text-blue-600 mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/408f2c26-7352-4ecf-95f7-2d116f335679.png" alt="Crypto lending illustration with coins transferring between wallets" class="rounded-lg" />
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">Lending Protocol</h3>
+                    <p class="text-gray-600 mb-4">Earn interest on your crypto assets with our decentralized lending platform.</p>
+                    <button class="deFi-interact-btn bg-blue-600 text-white px-4 py-2 rounded-lg text-sm">View Pools</button>
+                </div>
+                
+                <!-- DeFi Card 2 -->
+                <div class="card-gradient p-6 rounded-xl shadow-lg">
+                    <div class="text-blue-600 mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/96716f34-0c37-4104-b92d-e8670035d8e1.png" alt="Decentralized exchange interface showing token swapping" class="rounded-lg" />
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">DEX Aggregator</h3>
+                    <p class="text-gray-600 mb-4">Get the best rates across multiple decentralized exchanges in one trade.</p>
+                    <button class="deFi-interact-btn bg-blue-600 text-white px-4 py-2 rounded-lg text-sm">Trade Now</button>
+                </div>
+                
+                <!-- DeFi Card 3 -->
+                <div class="card-gradient p-6 rounded-xl shadow-lg">
+                    <div class="text-blue-600 mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b0ebbaf1-531a-4885-b90f-23590d9ba45d.png" alt="Yield farming dashboard showing APY percentages" class="rounded-lg" />
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">Yield Farming</h3>
+                    <p class="text-gray-600 mb-4">Maximize returns with our auto-compounding yield farming pools and lowest fees.</p>
+                    <button class="deFi-interact-btn bg-blue-600 text-white px-4 py-2 rounded-lg text-sm">Start Farming</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NFT Section -->
+    <section id="nft" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">NFT Marketplace</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- NFT Card 1 -->
+                <div class="nft-card bg-white rounded-xl overflow-hidden shadow-lg transition-transform duration-300">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/76e6593b-50a1-4698-874e-b31c7a8ceeba.png" alt="Digital artwork featuring abstract geometric patterns in blue tones" class="w-full" />
+                        <div class="absolute bottom-2 right-2 bg-blue-600 text-white px-2 py-1 rounded-md text-xs font-medium">
+                            0.5 ETH
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1 text-gray-800">Abstract Geometry #42</h3>
+                        <p class="text-gray-600 text-sm mb-3">Digital Art Collection</p>
+                        <button class="nft-buy-btn w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-sm transition-colors duration-300">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- NFT Card 2 -->
+                <div class="nft-card bg-white rounded-xl overflow-hidden shadow-lg transition-transform duration-300">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/27f3e380-5cdd-42cb-8c1d-40bdf30e504a.png" alt="Pixel art character with futuristic armor and glowing elements" class="w-full" />
+                        <div class="absolute bottom-2 right-2 bg-blue-600 text-white px-2 py-1 rounded-md text-xs font-medium">
+                            1.2 ETH
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1 text-gray-800">Pixel Warrior</h3>
+                        <p class="text-gray-600 text-sm mb-3">Game Characters</p>
+                        <button class="nft-buy-btn w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-sm transition-colors duration-300">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- NFT Card 3 -->
+                <div class="nft-card bg-white rounded-xl overflow-hidden shadow-lg transition-transform duration-300">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/001fd65e-1e0b-4de7-8323-916ac1a7f126.png" alt="3D rendered virtual real estate with modern architecture" class="w-full" />
+                        <div class="absolute bottom-2 right-2 bg-blue-600 text-white px-2 py-1 rounded-md text-xs font-medium">
+                            3.5 ETH
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1 text-gray-800">Virtual Penthouse</h3>
+                        <p class="text-gray-600 text-sm mb-3">Metaverse Real Estate</p>
+                        <button class="nft-buy-btn w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-sm transition-colors duration-300">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- NFT Card 4 -->
+                <div class="nft-card bg-white rounded-xl overflow-hidden shadow-lg transition-transform duration-300">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a0b89915-8fba-42dc-9894-1338c0989c9d.png" alt="Generative art with flowing organic patterns created algorithmically" class="w-full" />
+                        <div class="absolute bottom-2 right-2 bg-blue-600 text-white px-2 py-1 rounded-md text-xs font-medium">
+                            0.8 ETH
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1 text-gray-800">Algorithmic Dreams</h3>
+                        <p class="text-gray-600 text-sm mb-3">Generative Series</p>
+                        <button class="nft-buy-btn w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-sm transition-colors duration-300">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <button class="bg-white text-blue-600 border border-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors duration-300">
+                    View All Collections
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Contracts Section -->
+    <section id="smart-contracts" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Smart Contract Development</h2>
+            <div class="max-w-4xl mx-auto bg-gray-50 rounded-xl p-8 shadow-lg">
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Deploy Your Own Contracts</h3>
+                    <p class="text-gray-600 mb-6">Our platform provides tools to easily deploy and manage smart contracts for your blockchain projects.</p>
+                    
+                    <div class="bg-gray-800 rounded-lg p-4 mb-6">
+                        <pre class="text-green-400 text-sm overflow-x-auto">
+// Sample ERC20 Token Contract
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+contract VerisoulToken is ERC20 {
+    constructor(uint256 initialSupply) ERC20("Verisoul", "VSOUL") {
+        _mint(msg.sender, initialSupply);
+    }
+}</pre>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Contract Features</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-blue-600 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                ERC20, ERC721, and ERC1155 templates
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-blue-600 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Built-in security audits
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-blue-600 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Gas optimization tools
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="bg-white border border-gray-200 rounded-lg p-6">
+                            <h3 class="text-lg font-bold mb-4 text-gray-800">Deploy a New Contract</h3>
+                            <select class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                                <option>Token Contract (ERC20)</option>
+                                <option>NFT Contract (ERC721)</option>
+                                <option>Multi-Token Contract (ERC1155)</option>
+                                <option>Custom Smart Contract</option>
+                            </select>
+                            <button id="deployContract" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition-colors duration-300">
+                                Connect Wallet to Deploy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Verisoul</h3>
+                    <p class="text-gray-200">Building the decentralized future with blockchain technology.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Products</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-200 hover:text-white">DeFi Platform</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white">NFT Marketplace</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white">Smart Contracts</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-200 hover:text-white">Documentation</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white">Developer Tools</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white">API Reference</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Community</h3>
+                    <div class="flex space-x-4">
+                        <a href="#">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/691a4143-9771-4767-9f63-5759581ca1e0.png" alt="Twitter social media icon" class="rounded-full" />
+                        </a>
+                        <a href="#">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bc0583f8-6f5a-4c0e-9b9e-54a2a0b6096f.png" alt="Discord community icon" class="rounded-full" />
+                        </a>
+                        <a href="#">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7351e0f4-7213-4cd9-907b-ce0d5f7ab051.png" alt="GitHub repository icon" class="rounded-full" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-blue-400 mt-8 pt-8 text-center text-gray-200">
+                <p>© 2023 Verisoul. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Wallet connection functionality
+        document.getElementById('connectWallet').addEventListener('click', async () => {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+                    const account = accounts[0];
+                    document.getElementById('connectWallet').textContent = 
+                        `${account.substring(0, 6)}...${account.substring(account.length - 4)}`;
+                    
+                    // Enable contract interaction buttons
+                    document.querySelectorAll('.deFi-interact-btn, .nft-buy-btn, #deployContract').forEach(btn => {
+                        btn.disabled = false;
+                        btn.classList.remove('opacity-50');
+                    });
+                    
+                    console.log('Connected account:', account);
+                } catch (error) {
+                    console.error('Error connecting wallet:', error);
+                    alert('Error connecting wallet. Please try again.');
+                }
+            } else {
+                alert('Please install MetaMask to use this wallet!');
+            }
+        });
+
+        // Mock contract deployment
+        document.getElementById('deployContract').addEventListener('click', () => {
+            alert('Contract deployment would be initiated here. In a real implementation, this would interact with your smart contract deployment scripts.');
+        });
+
+        // NFT purchase simulation
+        document.querySelectorAll('.nft-buy-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (document.getElementById('connectWallet').textContent === 'Connect Wallet') {
+                    alert('Please connect your wallet first');
+                    return;
+                }
+                alert('NFT purchase transaction would be initiated here. In production, this would trigger an actual blockchain transaction.');
+            });
+        });
+
+        // DeFi interaction simulation
+        document.querySelectorAll('.deFi-interact-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (document.getElementById('connectWallet').textContent === 'Connect Wallet') {
+                    alert('Please connect your wallet first');
+                    return;
+                }
+                alert('DeFi interaction would be initiated here. In a live environment, this would interact with smart contracts.');
+            });
+        });
+    </script>
+</body>
+</html>
+
